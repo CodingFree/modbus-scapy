@@ -1,5 +1,6 @@
 from scapy.contrib.modbus import ModbusADURequest
 from serverlog import log
+import socket
 
 class ServerConnection():
     def __init__(self, buf_size, port):
