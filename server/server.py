@@ -8,17 +8,20 @@ import signal
 from ServerResponser import *
 from ServerConnection import ServerConnection
 from Device import save_devices, init_devices
+from pathlib import Path
 from serverlog import log
 from scapy.all import *
 load_contrib('modbus')
 
 
+log.info('Current directory: {}'.format(Path().absolute()) )
+filename = input('load ini from > ')
 config = configparser.ConfigParser()
-config.read('server.ini')
+config.read(filename)
 
 def loadconfig_helper(key_major, key_minor, default_value, cast_to_int):
     global config
-    try:
+    try:        
         result = config[key_major][key_minor]
     except:
         print("unable to load config entry '[{}][{}]'; using default '{}'".format(key_major, key_minor, default_value))

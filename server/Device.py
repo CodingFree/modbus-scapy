@@ -1,5 +1,6 @@
 import json
 import logging
+from pathlib import Path
 
 devices = {}
 
@@ -47,6 +48,7 @@ class Device:
 def init_devices():
 
     while True:
+        logging.info('Current directory: {}'.format(Path().absolute()) )
         filename = input('load devices from > ')
         try:
             file = open(filename)
